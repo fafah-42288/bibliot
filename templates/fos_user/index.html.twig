@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}FosUser index{% endblock %}
+
+{% block body %}
+    <h1>FosUser index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Email</th>
+                <th>Roles</th>
+                <th>Password</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for fos_user in fos_users %}
+            <tr>
+                <td>{{ fos_user.id }}</td>
+                <td>{{ fos_user.email }}</td>
+                <td>{{ fos_user.roles ? fos_user.roles|json_encode : '' }}</td>
+                <td>{{ fos_user.password }}</td>
+                <td>
+                    <a href="{{ path('fos_user_show', {'id': fos_user.id}) }}">show</a>
+                    <a href="{{ path('fos_user_edit', {'id': fos_user.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('fos_user_new') }}">Create new</a>
+{% endblock %}

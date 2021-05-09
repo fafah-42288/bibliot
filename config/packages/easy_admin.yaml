@@ -1,0 +1,196 @@
+easy_admin:
+
+    design:
+      brand_color: '#81b9ba'
+      assets:
+          css:
+            - '/bundles/easy.css'
+          js:
+            - 'https://unpkg.com/snarkdown@1.2.2/dist/snarkdown.umd.js'
+            - '/bundles/app/script.js'
+      menu:
+        - {label: "GESTION DES LIVRES"}
+        - label: "Classique"
+          children:
+              - {entity: Classique, label: "classique list", icon: "th-list"}
+              - {entity: Classique, label: "Add classique", icon: "plus", params: {action: 'new'}}
+              - {entity: Categorie, label: "categorie list", icon: "th-list"}
+              - {entity: Categorie, label: "Add categorie", icon: "plus", params: {action: 'new'}}
+              - {entity: SousCat, label: "Sous-categorie list", icon: "th-list"}
+              - {entity: SousCat, label: "Add Sous-categorie", icon: "plus", params: {action: 'new'}}
+        - label: "Periodique"
+          children:
+              - {entity: Periodique, label: "periodique list", icon: "th-list"}
+              - {entity: Periodique, label: "Add periodique", icon: "plus", params: {action: 'new'}}
+              - {entity: Classification, label: "Classification list", icon: "th-list"}
+              - {entity: Classification, label: "Add classification", icon: "plus", params: {action: 'new'}}
+              - {entity: SousClassification, label: "Sous Classification list", icon: "th-list"}
+              - {entity: SousClassification, label: "Add sous Classification", icon: "plus", params: {action: 'new'}}
+        - label: "User"
+          children:
+              - {entity: User, label: "user list", icon: "th-list"}
+              - {entity: User, label: "Add user", icon: "plus", params: {action: 'new'}}
+        - label: "Hafa"
+          children:
+              - {entity: Mofonaina, label: "mofonaina", icon: "th-list"}
+              - {entity: Autorise, label: "autorisation", icon: "th-list"}
+        - {entity: User, icon: "user"}
+    site_name: 'bibliotheque KTI'
+    user:
+        display_name: true
+        name_property_path: 'username'
+    list:
+      title: 'List de %%entity_label%%'
+    entities:
+      Classique:
+        class: App\Entity\Classique
+        label: "Classique"
+        form:
+          fields:
+              - {type: 'group', icon: 'th-list',label: 'ddd', css_class: 'col-lg-7'}
+              - {property: 'numIvent' , label: 'numero Inventaire',css_class: 'bbb'}
+              - {property: 'numCot' , label: 'numero Cottage'}
+              - { property: 'titreLiv',label: 'Titre'}
+              - { property: 'idCat', css_class: 'eee' }
+              - { property: 'idSousCat', css_class: 'aaa' }
+              - nbPage
+              - { property: 'auteurLiv',label: 'Auteur'}
+              - dateEntreLiv
+              - { property: 'lieuEditLiv',label: 'Lieu D edition'}
+              - dateEditLiv
+              - {type: 'group', icon: 'th-list',label: 'jjj', css_class: 'col-lg-5'}
+              - { property: 'isbnLiv',label: 'ISBN'}
+              - { property: 'coutLiv',label: 'Cout'}
+              - { property: 'largLiv',label: 'Largeur'}
+              - { property: 'longLiv',label: 'Longueur'}
+              - { property: 'remLiv',label: 'Remarque'}
+              - {type: 'group', icon: 'clip',label: 'Attachments', css_class: 'col-lg-5'}
+              - { property: 'livFile', type: 'vich_file' }
+              - { property: 'couvFile', type: 'vich_image' }
+
+        list:
+          collapse_actions: true
+          actions: ['show', 'edit', 'delete']
+          batch_actions: ['delete']
+          title: "liste des livres classique"
+          fields:
+            - id
+            - titreLiv
+            - auteurLiv
+            - idCat
+            - idSousCat
+            - { property: 'cheminLiv', template: 'dirige.html.twig', base_path: '%uploads_path%' }
+      Categorie:
+        class: App\Entity\Categorie
+        label: Categorie
+        form:
+          fields:
+              - {property: 'libelleCat' , label: 'libellé Categorie'}
+        list:
+          collapse_actions: true
+          actions: ['show', 'edit', 'delete']
+          batch_actions: ['delete']
+          title: "liste des categories"
+          fields:
+            - id
+            - libelleCat
+      Autorise:
+        class: App\Entity\Autorise
+        label: Autorise
+        list:
+          collapse_actions: true
+          actions: ['show', 'edit', 'delete']
+          batch_actions: ['delete']
+          title: "liste d'autorisation"
+      Mofonaina:
+        class: App\Entity\Mofonaina
+        label: Mofonaina
+        form:
+          fields:
+            - { property: 'text', type: 'text' }
+            - date
+        list:
+          collapse_actions: true
+          actions: ['show', 'edit', 'delete']
+          batch_actions: ['delete']
+          title: "liste des mofonaina"
+
+      Periodique:
+        class: App\Entity\Periodique
+        label: Periodique
+        form:
+          fields:
+            - {type: 'group', icon: 'th-list',label: '***', css_class: 'col-lg-7'}
+            - { property: 'NumPer',label: 'Numero'}
+            - { property: 'TitrePer',label: 'Titre'}
+            - { property: 'idTheme',label: 'Theme',css_class: 'fff' }
+            - { property: 'idVol',label: 'Volume', css_class: 'ggg' }
+            - { property: 'AuteurPer',label: 'Auteur'}
+            - { property: 'nbPagePer',label: 'Nombre de page'}
+            - {type: 'group', icon: 'th-list',label: '***', css_class: 'col-lg-5'}
+            - { property: 'issnPer',label: 'ISSN'}
+            - { property: 'NumEditPer',label: 'Numero d Editeur'}
+            - { property: 'lieuEditPer',label: 'Lieu d edition'}
+            - { property: 'dateEntrePer',label: 'Date d entrer'}
+            - { property: 'dateEditPer',label: 'Date d edition'}
+            - {type: 'group', icon: 'clip',label: 'Attachments', css_class: 'col-lg-5'}
+            - { property: 'perFile', type: 'vich_file' }
+            - { property: 'couvPerFile', type: 'vich_image' }
+      Classification:
+        class: App\Entity\Classification
+        label: Classification
+        form:
+          fields:
+            - theme
+      SousClassification:
+        class: App\Entity\SousClassification
+        label: SousClassification
+        form:
+          fields:
+            - { property: 'idTheme', css_class: 'ccc' }
+            - volume
+
+      SousCat:
+        class: App\Entity\SousCat
+        label: SousCategorie
+        form:
+          fields:
+            - { property: 'idCat', css_class: 'ddd' }
+            - libelleSousCat
+        list:
+          collapse_actions: true
+          actions: ['show', 'edit', 'delete']
+          batch_actions: ['delete']
+          title: "liste des Sous-categories"
+          fields:
+            - id
+            - idCat
+            - libelleSousCat
+      User:
+        class: App\Entity\User
+        controller: App\Controller\AdminController
+        acme_project:
+          export_path: '%kernel.project_dir/var/export/user'
+          password_encoding: { algorithm: 'bcrypt', cost: 12 }
+
+        label: user
+        list:
+          actions: ['show', 'edit', 'delete']
+          fields:
+            - id
+            - username
+            - fonction
+            - { property: 'sinoda',label: 'synaoda'}
+            - email
+            - { property: 'roles', label: 'Rôles', type: json_array}
+          sort: ['username', 'ASC']
+        form:
+          fields:
+            - { property: 'email', type: 'email'}
+            - { property: 'roles', label: 'Rôles', type: choice, type_options: {expanded: true, multiple: true, choices: {'Utilisateur':'ROLE_USER', 'Administrateur':'ROLE_ADMIN'}}}
+            - userName
+            - fonction
+            - { property: 'sinoda',label: 'synaoda'}
+            - email
+            - password
+            #        # List the entity class name you want to manage

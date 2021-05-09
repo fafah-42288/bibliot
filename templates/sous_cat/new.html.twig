@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New SousCat{% endblock %}
+
+{% block body %}
+    <h1>Create new SousCat</h1>
+
+    {{ include('sous_cat/_form.html.twig') }}
+    <select name="" id="sous_cat1_libelleCat"></select>
+
+    <a href="{{ path('sous_cat_index') }}">back to list</a>
+{% endblock %}
+    {% block javascripts %}
+    <script type="text/javascript">
+        $.ajax({
+            url: "listCat",
+            type: "GET",
+            dataType: "JSON",
+
+            success: function (Cats) {
+                var CatSelect = $("#sous_cat1_libelleCat");
+
+// Remove current options
+                CatSelect.html('');
+
+// Empty value ...
+                CatSelect.append('<option value> Select a Cat ...</option>');
+
+
+                $.each(Cats, function (key, Cat) {
+                    var s=Cat.libelleCat.toString()
+                    CatSelect.append('<option value="'+s+'" id="classique_libelleCat_libelleCat">' + s + '</option>');
+                });
+            },
+            error: function (err) {
+                alert("An error ocurred while loading data ...");
+            }
+        });
+    </script>
+
+    {% endblock %}

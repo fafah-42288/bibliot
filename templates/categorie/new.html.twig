@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Categorie{% endblock %}
+
+{% block body %}
+    <h1>Create new Categorie</h1>
+
+    {{ include('categorie/_form.html.twig') }}
+    <select id="select"></select>
+    <script>
+        $('#app_entity_categorie_libelleCat').change(function(){
+            var catSelector = $(this);
+            console.log($('catSelector'))
+            // Request the neighborhoods of the selected city.
+            $.ajax({
+                url: "{{ path('person_list_neighborhoods') }}",
+                type: "GET",
+                dataType: "JSON",
+                data: {
+                    libelleCat: catSelector.val()
+                },
+                success: function (sousCats) {
+                    var sousCatSelect = $("#app_entity_classique_libelleSousCat");
+
+                    // Remove current options
+                    sousCatSelect.html('');
+
+                    // Empty value ...
+                    sousCatSelect.append('<option value> Select a sousCat of ' + catSelector.find("option:selected").text() + ' ...</option>');
+
+
+                    $.each(sousCats, function (key, sousCat) {
+                        sousCatSelect.append('<option value="' + sousCat.libelleSousCat + '">' + sousCat.libelleSousCat + '</option>');
+                    });
+                },
+                error: function (err) {
+                    alert("An error ocurred while loading data ...");
+                }
+            });
+        });
+        console.log($('#App_classique_libelleCat'));
+    </script>
+    <a href="{{ path('categorie_index') }}">back to list</a>
+{% endblock %}

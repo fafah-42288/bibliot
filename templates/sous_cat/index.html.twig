@@ -1,0 +1,264 @@
+<!Doctype html> <html>
+
+<head>
+    <link href="/images/favicon.ico" rel="icon" type="image/x-icon" />
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i%7CLato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet" />
+    <link href="/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- Mobile Menu -->
+    <link href="/css/mmenu.css" rel="stylesheet" type="text/css" />
+    <link href="/css/mmenu.positioning.css" rel="stylesheet" type="text/css" />
+
+    <link rel="stylesheet" type="text/css" href="/css/jquery.accordion.css">
+
+    <!-- Stylesheet -->
+    <link href="/style.css" rel="stylesheet" type="text/css" />
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+    <h1>SousCat index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>NumSousCat</th>
+                <th>LibelleSousCat</th>
+                <th>LibelleCat</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for sous_cat in sous_cats %}
+            <tr>
+                <td>{{ sous_cat.id }}</td>
+                <td>{{ sous_cat.numSousCat }}</td>
+                <td>{{ sous_cat.libelleSousCat }}</td>
+                <td>{{ sous_cat.idCat }}</td>
+                <td>
+                    <a href="{{ path('sous_cat_show', {'id': sous_cat.id}) }}">show</a>
+                    <a href="{{ path('sous_cat_edit', {'id': sous_cat.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('sous_cat_new') }}">Create new</a>
+    <div class="owl-carousel-event owl-loaded owl-drag">
+
+
+
+
+
+
+        <div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 1757px;"><div class="owl-item active" style="width: 262.667px; margin-right: 30px;"><div class="single-related-event">
+                        <figure>
+                            <a href="news-events-detail.html"><img src="/images/news-event/related-event-01.jpg" alt="Related event"></a>
+                            <figcaption>
+                                <header>
+                                    <ul class="news-event-info">
+                                        <li>
+                                            <a href="#" target="_blank">
+                                                <i class="fa fa-calendar"></i>
+                                                July 25, 2016
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" target="_blank">
+                                                <i class="fa fa-map-marker"></i>
+                                                New York, USA
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <h4><a href=".html#">It uses a dictionary of over 200 Latin word</a></h4>
+                                </header>
+                                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+                            </figcaption>
+                        </figure>
+                    </div></div><div class="owl-item active" style="width: 262.667px; margin-right: 30px;"><div class="single-related-event">
+                        <figure>
+                            <a href="news-events-detail.html"><img src="/images/news-event/related-event-02.jpg" alt="Related event"></a>
+                            <figcaption>
+                                <header>
+                                    <ul class="news-event-info">
+                                        <li>
+                                            <a href="#" target="_blank">
+                                                <i class="fa fa-calendar"></i>
+                                                July 25, 2016
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" target="_blank">
+                                                <i class="fa fa-map-marker"></i>
+                                                New York, USA
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <h4><a href=".html#">It uses a dictionary of over 200 Latin word</a></h4>
+                                </header>
+                                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+                            </figcaption>
+                        </figure>
+                    </div></div><div class="owl-item active" style="width: 262.667px; margin-right: 30px;"><div class="single-related-event">
+                        <figure>
+                            <a href="news-events-detail.html"><img src="/images/news-event/related-event-03.jpg" alt="Related event"></a>
+                            <figcaption>
+                                <header>
+                                    <ul class="news-event-info">
+                                        <li>
+                                            <a href="#" target="_blank">
+                                                <i class="fa fa-calendar"></i>
+                                                July 25, 2016
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" target="_blank">
+                                                <i class="fa fa-map-marker"></i>
+                                                New York, USA
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <h4><a href=".html#">It uses a dictionary of over 200 Latin word</a></h4>
+                                </header>
+                                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+                            </figcaption>
+                        </figure>
+                    </div></div><div class="owl-item" style="width: 262.667px; margin-right: 30px;"><div class="single-related-event">
+                        <figure>
+                            <a href="news-events-detail.html"><img src="/images/news-event/related-event-01.jpg" alt="Related event"></a>
+                            <figcaption>
+                                <header>
+                                    <ul class="news-event-info">
+                                        <li>
+                                            <a href="#" target="_blank">
+                                                <i class="fa fa-calendar"></i>
+                                                July 25, 2016
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" target="_blank">
+                                                <i class="fa fa-map-marker"></i>
+                                                New York, USA
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <h4><a href=".html#">It uses a dictionary of over 200 Latin word</a></h4>
+                                </header>
+                                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+                            </figcaption>
+                        </figure>
+                    </div></div><div class="owl-item" style="width: 262.667px; margin-right: 30px;"><div class="single-related-event">
+                        <figure>
+                            <a href="news-events-detail.html"><img src="/images/news-event/related-event-02.jpg" alt="Related event"></a>
+                            <figcaption>
+                                <header>
+                                    <ul class="news-event-info">
+                                        <li>
+                                            <a href="#" target="_blank">
+                                                <i class="fa fa-calendar"></i>
+                                                July 25, 2016
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" target="_blank">
+                                                <i class="fa fa-map-marker"></i>
+                                                New York, USA
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <h4><a href=".html#">It uses a dictionary of over 200 Latin word</a></h4>
+                                </header>
+                                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+                            </figcaption>
+                        </figure>
+                    </div></div><div class="owl-item" style="width: 262.667px; margin-right: 30px;"><div class="single-related-event">
+                        <figure>
+                            <a href="news-events-detail.html"><img src="/images/news-event/related-event-03.jpg" alt="Related event"></a>
+                            <figcaption>
+                                <header>
+                                    <ul class="news-event-info">
+                                        <li>
+                                            <a href="#" target="_blank">
+                                                <i class="fa fa-calendar"></i>
+                                                July 25, 2016
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" target="_blank">
+                                                <i class="fa fa-map-marker"></i>
+                                                New York, USA
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <h4><a href=".html#">It uses a dictionary of over 200 Latin word</a></h4>
+                                </header>
+                                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+                            </figcaption>
+                        </figure>
+                    </div></div></div></div><div class="owl-nav disabled"><div class="owl-prev">prev</div><div class="owl-next">next</div></div><div class="owl-dots"><div class="owl-dot active"><span></span></div><div class="owl-dot"><span></span></div></div></div>
+    <script type="text/javascript" src="/js/jquery-1.12.4.min.js"></script>
+
+    <!-- jQuery UI -->
+    <script type="text/javascript" src="/js/jquery-ui.min.js"></script>
+
+    <!-- jQuery Easing -->
+    <script type="text/javascript" src="/js/jquery.easing.1.3.js"></script>
+
+    <!-- Bootstrap -->
+    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+
+    <!-- Mobile Menu -->
+    <script type="text/javascript" src="/js/mmenu.min.js"></script>
+
+    <!-- Harvey - State manager for media queries -->
+    <script type="text/javascript" src="/js/harvey.min.js"></script>
+
+    <!-- Waypoints - Load Elements on View -->
+    <script type="text/javascript" src="/js/waypoints.min.js"></script>
+
+    <!-- Facts Counter -->
+    <script type="text/javascript" src="/js/facts.counter.min.js"></script>
+
+    <!-- MixItUp - Category Filter -->
+    <script type="text/javascript" src="/js/mixitup.min.js"></script>
+
+    <!-- Owl Carousel -->
+    <script type="text/javascript" src="/js/owl.carousel.min.js"></script>
+
+    <!-- Accordion -->
+    <script type="text/javascript" src="/js/accordion.min.js"></script>
+
+    <!-- Responsive Tabs -->
+    <script type="text/javascript" src="/js/responsive.tabs.min.js"></script>
+
+    <!-- Responsive Table -->
+    <script type="text/javascript" src="/js/responsive.table.min.js"></script>
+
+    <!-- Masonry -->
+    <script type="text/javascript" src="/js/masonry.min.js"></script>
+
+    <!-- Carousel Swipe -->
+    <script type="text/javascript" src="/js/carousel.swipe.min.js"></script>
+
+    <!-- bxSlider -->
+    <script type="text/javascript" src="/js/bxslider.min.js"></script>
+
+    <!-- Custom Scripts -->
+    <script type="text/javascript" src="/js/main.js"></script>
+
+</body>
+</html>
