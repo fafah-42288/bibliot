@@ -1,0 +1,5 @@
+<form method="post" action="{{ path('inscrit_delete', {'id': inscrit.id}) }}" onsubmit="return confirm('Etes-vous sure de refuser?');">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ inscrit.id) }}">
+    <button class="login100-form-btn" style="color: red;">REFUSER</button>
+</form>

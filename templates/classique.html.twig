@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="{{ asset('bundles/plugins/fontawesome-free/css/all.min.css') }}">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Tempusdominus Bbootstrap 4 -->
+    <link rel="stylesheet" href="{{ asset('bundles/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
+    <!-- iCheck -->
+    <link rel="stylesheet" href="{{ asset('bundles/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
+    <!-- JQVMap -->
+    <link rel="stylesheet" href="{{ asset('bundles/plugins/jqvmap/jqvmap.min.css') }}">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="{{ asset('bundles/dist/css/adminlte.min.css') }}">
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="{{ asset('bundles/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
+    <!-- Daterange picker -->
+    <link rel="stylesheet" href="{{ asset('bundles/plugins/daterangepicker/daterangepicker.css') }}">
+    <!-- summernote -->
+    <link rel="stylesheet" href="{{ asset('bundles/plugins/summernote/summernote-bs4.css') }}">
+    <!-- Google Font: Source Sans Pro -->
+
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <title>{% block title %}hello{% endblock %}</title>
+    {% block stylesheets %}
+
+        <style>
+            *{
+                margin:0;
+                padding:0;
+            }
+            .top-bar{
+                background: midnightblue;
+                color: whitesmoke;
+                padding: 1rem;
+            }
+            .btn{
+                background: grey;
+                color: whitesmoke;
+                border: none;
+                outline: none;
+                cursor: pointer;
+                padding: 0.7rem 2rem;
+            }
+            .btn:hover{
+                opacity: 0.9;
+            }
+            .page-info{
+                margin-left: 1rem;
+            }
+            .row {
+                display: flex;
+            }
+
+            .col {
+                flex: 1;
+                padding: 20px;
+                border: none;
+            }
+
+            .color-palette {
+                height: 35px;
+                line-height: 35px;
+                text-align: right;
+                padding-right: .75rem;
+            }
+
+            .color-palette.disabled {
+                text-align: center;
+                padding-right: 0;
+                display: block;
+            }
+
+            .color-palette-set {
+                margin-bottom: 15px;
+            }
+
+            .color-palette span {
+                display: none;
+                font-size: 12px;
+            }
+
+            .color-palette:hover span {
+                display: block;
+            }
+
+            .color-palette.disabled span {
+                display: block;
+                text-align: left;
+                padding-left: .75rem;
+            }
+
+            .color-palette-box h4 {
+                position: absolute;
+                left: 1.25rem;
+                margin-top: .75rem;
+                color: rgba(255, 255, 255, 0.8);
+                font-size: 12px;
+                display: block;
+                z-index: 7;
+            }
+
+        </style>
+        <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.2.228/build/pdf.min.js"></script>
+    {% endblock %}
+</head>
+<body>
+<div class="top-bar">
+    <button class="btn " id="prev-page">
+        <i class="fas fa-arrow-alt-circle-left"></i>Prev Page
+    </button>
+    <button class="btn" id="next-page">
+        Next Page <i class="fas fa-arrow-alt-circle-right"></i>
+    </button>
+    <button class="btn" id="page-zoom">
+        Zoom <i class="fa fa-plus-circle"></i>
+    </button>
+    <button class="btn" id="page-zoom">
+        Zoom <i class="fa fa-minus-circle"></i>
+    </button>
+    <span class="page-info">
+        page <span id="page-num"></span>of <span id="page-count"></span>
+    </span>
+</div>
+{% block body %}
+    <div class="row">
+        <div class="col" style="width: 50%">
+    <canvas id="my_canvas" style="padding-right:30%">
+
+    </canvas>{% endblock %}
+        </div>
+        <div class="row" style="margin-top: 20px">
+            <div class="col-md-30">
+                <!-- DIRECT CHAT PRIMARY -->
+                <div class="card card-primary collapsed-card">
+                    <div class="card-header" style="background: midnightblue">
+                        <h3 class="card-title">Info Livre</h3>
+
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                        <!-- /.card-tools -->
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <div class="col-sm-4 col-md-2">
+                            <div class="color-palette-set">
+                                <table class="table">
+                                    <tbody>
+                                    <tr>
+                                        <th style="color: midnightblue;font-size: small">Numero Iventaire</th>
+                                        <td>{{ classique.numIvent }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th style="color: midnightblue;font-size: small">Numero de Cottage</th>
+                                        <td>{{ classique.numCot }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th style="color: midnightblue;font-size: small">Titre du Livre</th>
+                                        <td>{{ classique.titreLiv }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th style="color: midnightblue;font-size: small">Auteur du Livre</th>
+                                        <td>{{ classique.auteurLiv }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th style="color: midnightblue;font-size: small">Lieu Edition du Livre</th>
+                                        <td>{{ classique.lieuEditLiv }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th style="color: midnightblue;font-size: small">Date Edition du Livre</th>
+                                        <td>{{ classique.dateEditLiv ? classique.dateEditLiv|date('Y-m-d') : '' }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th style="color: midnightblue;font-size: small">ISBN</th>
+                                        <td>{{ classique.isbnLiv }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th style="color: midnightblue;font-size: small">Cout du Livre</th>
+                                        <td>{{ classique.coutLiv }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th style="color: midnightblue;font-size: small">Largeur du Livre</th>
+                                        <td>{{ classique.largLiv }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th style="color: midnightblue;font-size: small">Longeur du Livre</th>
+                                        <td>{{ classique.longLiv }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th style="color: midnightblue;font-size: small">Remarque sur cet Livre</th>
+                                        <td>{{ classique.remLiv }}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+
+                </div>
+                <!-- /.card-body -->
+                    <div class="card-footer">
+                        <form action="#" method="post">
+                            <div class="input-group">
+                                  <span class="input-group-append">
+                                </span>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- /.card-footer-->
+    </div>
+                <!--/.direct-chat -->
+</div>
+
+
+
+
+{% block javascripts %}
+    <script>
+        let doc=null,
+            pageNum=1,
+            pageIsRendering=false,
+            pageNumIsPending=null;
+        var scale=1.1,
+            canvas=document.querySelector('#my_canvas'),
+            div=document.querySelector('#show');
+            ctx=canvas.getContext('2d');
+        const renderPage= num =>{pageIsRendering=true;
+        doc.getPage(num).then(page=>{
+            const viewport=page.getViewport({scale});
+            canvas.height=viewport.height;
+            canvas.width=viewport.width;
+            const renderCtx={
+                canvasContext: ctx,
+                viewport
+            }
+            page.render(renderCtx).promise.then(()=>{
+                pageIsRendering=false;
+                if(pageNumIsPending!==null){
+                    renderPage(pageNumIsPending);
+                    pageNumIsPending=null;
+                }
+            });
+            document.querySelector('#page-num').textContent=num;
+        });
+        };
+        const queueRenderPage= num=>{
+            if(pageIsRendering){
+                pageNumIsPending=num;
+            }
+            else {
+                renderPage(num);
+            }
+        }
+const showPrevPage =() => {
+    if(pageNum <=1){
+        return;
+    }
+    pageNum--;
+    queueRenderPage(pageNum);
+}
+const showZoomPage =() => {
+            scale=scale+0.1;
+             }
+const showNextPage =() => {
+    if(pageNum >=doc.numPages){
+        return;
+    }
+    pageNum++;
+    queueRenderPage(pageNum);
+}
+        const showInfoPage =() => {
+        }
+
+
+pdfjsLib.getDocument("{{ '/uploads/files/'~ '/' ~ pdf }}").then(doc_=>{doc=doc_;
+document.querySelector('#page-count').textContent=doc.numPages;
+renderPage(pageNum);
+
+        });
+        document.querySelector('#prev-page').addEventListener('click',showPrevPage);
+        document.querySelector('#next-page').addEventListener('click',showNextPage);
+        document.querySelector('#page-info').addEventListener('click',showInfoPage);
+        document.querySelector('#page-zoom').addEventListener('click',showZoomPage);
+    </script>
+    <script src="{{ asset('bundles/plugins/jquery/jquery.min.js')}}" ></script>
+    <!-- Bootstrap -->
+    <script src="{{ asset('bundles/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <!-- jQuery UI -->
+    <script src="{{ asset('bundles/plugins/jquery-ui/jquery-ui.min.js')}}"></script>
+    <!-- Ekko Lightbox -->
+    <script src="{{ asset('bundles/plugins/ekko-lightbox/ekko-lightbox.min.js')}}"></script>
+    <!-- AdminLTE App -->
+    <script src="{{ asset('bundles/dist/js/adminlte.min.js')}}"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="{{ asset('bundles/dist/js/demo.js')}}"></script>
+    <!-- Filterizr-->
+    <script src="{{ asset('bundles/plugins/filterizr/jquery.filterizr.min.js')}}"></script>
+    <!-- Page specific script -->
+    <script>
+        $(function () {
+            $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+                event.preventDefault();
+                $(this).ekkoLightbox({
+                    alwaysShowClose: true
+                });
+            });
+
+            $('.filter-container').filterizr({gutterPixels: 3});
+            $('.btn[data-filter]').on('click', function() {
+                $('.btn[data-filter]').removeClass('active');
+                $(this).addClass('active');
+            });
+        })
+    </script>{% endblock %}
+</body>
+</html>

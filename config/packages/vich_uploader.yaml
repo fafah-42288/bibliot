@@ -1,0 +1,19 @@
+vich_uploader:
+    db_driver: orm
+
+    mappings:
+        classique_file:
+            uri_prefix: '%uploads_path%'
+            upload_destination: '%kernel.project_dir%/public%uploads_path%'
+        classique_couv:
+            uri_prefix: '%uploads_couv_path%'
+            upload_destination: '%kernel.project_dir%/public%uploads_couv_path%'
+        perikopa:
+            uri_prefix: '%uploads_perikopa_path%'
+            upload_destination: '%kernel.project_dir%/public%uploads_perikopa_path%'
+        periodique_file:
+            uri_prefix: '%uploads_per_path%'
+            upload_destination: '%kernel.project_dir%/public%uploads_per_path%'
+        periodique_couvPer:
+            uri_prefix: '%uploads_couvPer_path%'
+            upload_destination: '%kernel.project_dir%/public%uploads_couvPer_path%'

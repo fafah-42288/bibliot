@@ -1,0 +1,105 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Inscrit</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="/login/images/icons/favicon.ico"/>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/login/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/login/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/login/fonts/iconic/css/material-design-iconic-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/login/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/login/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/login/vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/login/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/login/vendor/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/login/css/util.css">
+    <link rel="stylesheet" type="text/css" href="/login/css/main.css">
+    <!--===============================================================================================-->
+</head>
+<style>
+    .wrap-login100{background-image: -webkit-linear-gradient( rgb(18, 170, 244), rgb(5, 32, 136));
+        background-image:-moz-linear-gradient(rgb(18, 170, 244), rgb(5, 32, 136));
+    }
+    .container-login100::before {
+        background-color: rgba(255,255,255,0.8);}
+</style>
+<body>
+
+<div class="limiter">
+    <div class="container-login100" style="background-image: url('/images/IMG_3582.JPG');">
+        <div class="wrap-login100">
+
+                <table class="table" style="color: white">
+                    <tbody>
+                    <tr>
+                        <th>Nom et Prenom</th>
+                        <td>{{ inscrit.nom }}</td>
+                    </tr>
+                    <tr>
+                        <th>Fonction</th>
+                        <td>{{ inscrit.fonction }}</td>
+                    </tr>
+                    <tr>
+                        <th>Synaodaparitany</th>
+                        <td>{{ inscrit.sinoda }}</td>
+                    </tr>
+                    <tr>
+                        <th>Email</th>
+                        <td>{{ inscrit.email }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+<div style="display: flex">
+    <form method="post" action="{{ path('inscrit_add')}}" >
+        <input type="hidden" name="id" value="{{ inscrit.id }}">
+        <input type="hidden" name="email" value="{{ inscrit.email }}">
+        <input type="hidden" name="nom" value="{{ inscrit.nom }}">
+        <input type="hidden" name="fonction" value="{{ inscrit.fonction }}">
+        <input type="hidden" name="sinoda" value="{{ inscrit.sinoda }}">
+        <input type="hidden" name="password" value="{{ inscrit.password }}">
+            <button class="login100-form-btn" style="color: green">VALIDER</button>
+    </form>
+    {{ include('inscrit/_delete_form.html.twig') }}
+</div>
+
+            <div class="text-center p-t-90">
+                <a class="txt1" href="{{ path('inscrit_index') }}">back to list</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="dropDownSelect1"></div>
+
+<!--===============================================================================================-->
+<script src="/login/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+<script src="/login/vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+<script src="/login/vendor/bootstrap/js/popper.js"></script>
+<script src="/login/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+<script src="/login/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+<script src="/login/vendor/daterangepicker/moment.min.js"></script>
+<script src="/login/vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+<script src="/login/vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+<script src="/login/js/main.js"></script>
+
+</body>
+</html>

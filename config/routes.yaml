@@ -1,0 +1,121 @@
+Per:
+    path: /Per
+    controller: App\Controller\PeriodiqueController::pdfShow
+    methods: GET
+homepage:
+    path: /
+    controller: App\Controller\SecurityController::login
+    methods: GET
+web:
+    path: /web
+    controller: App\Controller\ClassiqueController::showPdf
+    methods: GET
+per:
+    path: /per
+    controller: App\Controller\ClassiqueController::per
+    methods: GET
+contact:
+    path: /contact
+    controller: App\Controller\ClassiqueController::contact
+    methods: GET
+mofo:
+    path: /mofo
+    controller: App\Controller\ClassiqueController::mofo
+    methods: GET
+affiche:
+    path: /affiche
+    controller: App\Controller\ClassiqueController::affiche
+    methods: GET
+tel:
+    path: /tel
+    controller: App\Controller\ClassiqueController::telechargerPdf
+    methods: GET
+info:
+    path: /info
+    controller: App\Controller\ClassiqueController::info
+    methods: GET
+index1:
+
+    path: /aaa
+    controller: App\Controller\ClassiqueController::index
+index6:
+
+    path: /admin/listCat
+    controller: App\Controller\ClassiqueController::listCat
+classification:
+    path: /admin/listTheme
+    controller: App\Controller\PeriodiqueController::listTheme
+listVol:
+    path: /admin/listVol
+    controller: App\Controller\PeriodiqueController::listVol
+    methods: GET
+inscrit:
+    path: /inscrit
+    controller: App\Controller\ClassiqueController::inscrit
+    methods: POST
+inscrit_add:
+    path: /inscrit_add
+    controller: App\Controller\ClassiqueController::inscritAdd
+    methods: POST
+inscritList:
+    path: /inscritList
+    controller: App\Controller\InscritController::index
+    methods: GET
+tenaContact:
+    path: /tenaContact
+    controller: App\Controller\InscritController::contact
+    methods: GET
+indexNew:
+    path: /new
+    controller: App\Controller\ClassiqueController::indexNew
+index2:
+    path: /list
+    controller: App\Controller\ClassiqueController::classique_list_SousCat
+index3:
+    path: /listLiv
+    controller: App\Controller\ClassiqueController::listLiv
+biblio:
+    path: /biblio
+    controller: App\Controller\ClassiqueController::biblio
+guide:
+    path: /guide
+    controller: App\Controller\ClassiqueController::guide
+kti:
+    path: /kti
+    controller: App\Controller\ClassiqueController::kti
+home:
+    path: /home
+    controller: App\Controller\ClassiqueController::home
+periodique:
+    path: /periodique
+    controller: App\Controller\PeriodiqueController::periodique
+
+listSousCat:
+    path: /admin/listSousCat
+    controller: App\Controller\ClassiqueController::listSousCat
+    methods: GET
+chercheLiv:
+    path: /chercheLiv
+    controller: App\Controller\ClassiqueController::chercheLiv
+    methods: GET
+chercheAut:
+    path: /chercheAut
+    controller: App\Controller\ClassiqueController::chercheAut
+    methods: GET
+cherchePer:
+    path: /cherchePer
+    controller: App\Controller\PeriodiqueController::cherchePer
+    methods: GET
+
+listPer:
+    path: /listPer
+    controller: App\Controller\PeriodiqueController::listPer
+    methods: GET
+listLivre:
+    path: /listLivre
+    controller: App\Controller\ClassiqueController::listLivre
+    methods: GET
+index8:
+
+    path: /admin/listNumIvent
+    controller: App\Controller\ClassiqueController::listNumIvent

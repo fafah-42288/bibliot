@@ -1,0 +1,135 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Classique{% endblock %}
+
+{% block body %}
+    <h1>Classique</h1>
+    <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.2.228/build/pdf.min.js"></script>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ classique.id }}</td>
+            </tr>
+            <tr>
+                <th>NumLiv</th>
+                <td>{{ classique.numLiv }}</td>
+            </tr>
+            <tr>
+                <th>TitreLiv</th>
+                <td>{{ classique.titreLiv }}</td>
+            </tr>
+            <tr>
+                <th>NumCatLiv</th>
+                <td>{{ classique.numCatLiv }}</td>
+            </tr>
+            <tr>
+                <th>NumSousCatLiv</th>
+                <td>{{ classique.numSousCatLiv }}</td>
+            </tr>
+            <tr>
+                <th>NbPage</th>
+                <td>{{ classique.nbPage }}</td>
+            </tr>
+            <tr>
+                <th>AuteurLiv</th>
+                <td>{{ classique.auteurLiv }}</td>
+            </tr>
+            <tr>
+                <th>DateEntreLiv</th>
+                <td>{{ classique.dateEntreLiv ? classique.dateEntreLiv|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>LieuEditLiv</th>
+                <td>{{ classique.lieuEditLiv }}</td>
+            </tr>
+            <tr>
+                <th>DateEditLiv</th>
+                <td>{{ classique.dateEditLiv ? classique.dateEditLiv|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>ISBN</th>
+                <td>{{ classique.isbnLiv }}</td>
+            </tr>
+            <tr>
+                <th>CoutLiv</th>
+                <td>{{ classique.coutLiv }}</td>
+            </tr>
+            <tr>
+                <th>LargLiv</th>
+                <td>{{ classique.largLiv }}</td>
+            </tr>
+            <tr>
+                <th>LongLiv</th>
+                <td>{{ classique.longLiv }}</td>
+            </tr>
+            <tr>
+                <th>RemLiv</th>
+                <td>{{ classique.remLiv }}</td>
+            </tr>
+            <tr>
+                <th> <div class="card-header">
+                        <h3 class="card-title">Direct Chat</h3>
+
+                        <div class="card-tools">
+                            <span data-toggle="tooltip" title="3 New Messages" class="badge bg-primary">3</span>
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-tool" data-toggle="tooltip" title="Contacts"
+                                    data-widget="chat-pane-toggle">
+                                <i class="fas fa-comments"></i></button>
+                            <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div></th>
+                <td><a href=""> le fichier</a></td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <canvas id="the-canvas"></canvas>
+
+
+    <script>
+        //
+        // If absolute URL from the remote server is provided, configure the CORS
+        // header on that server.
+        //
+
+        //
+        // The workerSrc property shall be specified.
+        //
+
+        //
+        // Asynchronous download PDF
+        //
+        pdfjsLib.getDocument('./FICHE-TECHNIQUE.pdf').then(doc=>{
+            //
+            // Fetch the first page
+            //
+            pdf.getPage(1).then(page=>{
+
+                //
+                // Prepare canvas using PDF page dimensions
+                //
+                var canvas = document.getElementById('the-canvas');
+                var context = canvas.getContext('2d');
+                canvas.height = viewport.height;
+                canvas.width = viewport.width;
+
+                //
+                // Render PDF page into canvas context
+                //
+
+                page.render({canvasContext: context,
+                    viewport: viewport,});
+            });
+        });
+    </script>
+
+
+
+
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Categorie{% endblock %}
+
+{% block body %}
+    <h1>Create new Categorie</h1>
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+    <select name="" id="libelleSousCat"></select>
+{% endblock %}
+    {% block javascripts %}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script>
+        $('#app_entity_classique_libelleCat').change(function(){
+            var catSelector = $(this).val();
+            console.log(catSelector)
+            var a=parseInt(catSelector)
+            console.log(a)
+            // Request the neighborhoods of the selected city.
+            $.ajax({
+                url: "{{ path('classique_list_SousCat') }}",
+                type: "GET",
+                dataType: "JSON",
+                data: {
+                    idlibelleCat:a
+                },
+                success: function (sousCats) {
+                    var sousCatSelect = $("#libelleSousCat");
+
+                    // Remove current options
+                    sousCatSelect.html('');
+
+                    // Empty value ...
+                    sousCatSelect.append('<option value> Select a sousCat of ' + a + ' ...</option>');
+
+
+                    $.each(sousCats, function (key, sousCat) {
+                        sousCatSelect.append('<option value="' + sousCat.libelleSousCat + '">' + sousCat.libelleSousCat + '</option>');
+                    });
+                },
+                error: function (err) {
+                    alert("An error ocurred while loading data ...");
+                }
+            });
+
+        });
+        console.log($('#App_classique_libelleCat'));
+    </script>
+   {% endblock %}
+
+

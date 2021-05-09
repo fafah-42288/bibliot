@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>bibliotheque TPM</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="{{ asset('bundles/plugins/fontawesome-free/css/all.min.css') }}">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Tempusdominus Bbootstrap 4 -->
+    <link rel="stylesheet" href="{{ asset('bundles/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
+    <!-- iCheck -->
+    <link rel="stylesheet" href="{{ asset('bundles/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
+    <!-- JQVMap -->
+    <link rel="stylesheet" href="{{ asset('bundles/plugins/jqvmap/jqvmap.min.css') }}">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="{{ asset('bundles/dist/css/adminlte.min.css') }}">
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="{{ asset('bundles/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
+    <!-- Daterange picker -->
+    <link rel="stylesheet" href="{{ asset('bundles/plugins/daterangepicker/daterangepicker.css') }}">
+    <!-- summernote -->
+    <link rel="stylesheet" href="{{ asset('bundles/plugins/summernote/summernote-bs4.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <link href="/images/favicon.ico" rel="icon" type="image/x-icon" />
+
+    <!-- Fonts -->
+
+    <!-- Stylesheet -->
+
+    <style>
+        .btn-primary {
+            color: #007bff;
+            background-color: #fff;
+            border-color: #007bff;
+            box-shadow: none;}
+        .btn-primary a:hover {
+            color: #fff;
+            background-color: #0069d9;
+            border-color: #0062cc;
+        }
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .topnav {
+            overflow: hidden;
+            background-color: transparent;
+        }
+
+        .topnav a {
+            float: left;
+            display: block;
+            color: grey;
+            text-align: center;
+            padding: 12px 12px;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        .topnav a:hover {
+            background-color: #ddd;
+            color: grey;
+        }
+
+        .topnav a.active {
+            background-color: whitesmoke;
+            color: grey;
+        }
+
+        .topnav .icon {
+            display: none;
+        }
+
+        @media screen and (max-width: 600px) {
+            .topnav a{display: none;}
+            .topnav a.icon {
+                float: right;
+                display: block;
+            }
+            .inner{
+                height: 100px}
+            .topnav a{padding: 5px 6px;font-size: 13px}
+        }
+
+        @media screen and (max-width: 600px) {
+            .topnav.responsive {position: relative;}
+            .topnav.responsive .icon {
+                position: absolute;
+                right: 0;
+                top: 0;
+            }
+            .topnav.responsive a {
+                float: none;
+                display: flex;
+                text-align: left;
+            }
+        }
+        aside{
+
+        }
+        .fa-power-off::before {
+            color:
+                    red;
+        }
+        div.content-wrapper{
+            /* background: url("/images/welcome-img-home-v.jpg") no-repeat;
+              background-size: cover;*/
+
+        }
+        #showcase{
+            background: url("/images/welcome-img-home-v.jpg") no-repeat 0;
+            background-size: cover;
+        }
+        .small-box > .small-box-footer {
+            color: #3395ff;
+            text-align: center;
+        }
+        @media  {
+
+        }
+        nav{
+            /* background: url("/images/welcome-img-home-v.jpg") no-repeat 0;
+             background-size: cover;*/
+            background: ;
+        }
+    </style>
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+        <!-- Left navbar links -->
+        <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-arrow-left">
+            </i></a>
+
+        <div class="topnav" id="myTopnav">
+            <a href="{{ path('classique_home') }}" class="">Acceuil</a>
+            <a href="{{ path('classique_list') }}" class="Active">Classique</a>
+            <a href="#" class="">Periodique</a>
+            <a href="{{ path('biblio') }}" class="">Biblio</a>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <i class="fa fa-bars"></i>
+            </a>
+        </div>
+        <script>
+            function myFunction() {
+                var x = document.getElementById("myTopnav");
+                if (x.className === "topnav") {
+                    x.className += " responsive";
+                } else {
+                    x.className = "topnav";
+                }
+            }</script>
+        <!-- SEARCH FORM -->
+        <form class="form-inline ml-3">
+            <div class="input-group input-group-sm">
+                <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search" name="search" id="search">
+                <div class="input-group-append">
+                    <a href="#" class="nav-link" onclick="chercher();">
+                        <i class="fas fa-search"></i>
+                    </a>
+                </div>
+            </div>
+        </form>
+
+        <!-- Right navbar links -->
+        <ul class="navbar-nav ml-auto">
+            <!-- Messages Dropdown Menu -->
+
+            <!-- Notifications Dropdown Menu -->
+            <li class="nav-item dropdown">
+                <div class="user user-menu-wrapper " data-toggle="popover" data-placement="bottom" data-container=".user-menu-wrapper" data-content="                        <div class=&quot;popover-content-section user-details user-has-actions&quot;>
+                            <p class=&quot;small text-muted mb-0&quot;>user</p>
+                            <p class=&quot;user-details-name&quot;>
+                                                                   {{user.username}}
+                                                            </p>
+                        </div>
+
+                                                                                    <div class=&quot;popover-content-section user-menu&quot;>
+                                                                            <a class=&quot;user-action user-action-logout&quot; href=&quot;/logout&quot;><i class=&quot;nav-icon fas fa-power-off red&quot;>Deconnecter</i></a>
+                                                                                                        </div>
+                                                                        " data-html="true" data-original-title="" title="" aria-describedby="popover623208">
+                    <i class="fa fa-fw fa-user-circle user-avatar"></i>
+                    <span class="user-name">{{user.username}}</span>
+                    <div class="popover fade show bs-popover-bottom" role="tooltip" id="popover623208" x-placement="bottom" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(1248px, 51px, 0px);"><div class="arrow" style="left: 28px;"></div><h3 class="popover-header"></h3><div class="popover-body"><div class="popover-content-section user-details user-has-actions">
+                                <p class="small text-muted mb-0">Nom user:</p>
+                                <p class="user-details-name">
+                                    fafah
+                                </p>
+                            </div>
+
+                            <div class="popover-content-section user-menu">
+                                <a class="user-action user-action-logout" href="/logout"><i class="nav-icon fas fa-power-off red"></i>
+                                    <p>
+                                        Deconnecter
+                                    </p></a>
+                            </div>
+                        </div></div></div>
+            </li>
+            <li class="nav-item dropdown" style="margin-right: 10px">
+                <p></p>
+            </li>
+
+        </ul>
+    </nav>
+    <!-- /.navbar -->
+
+    <!-- Main Sidebar Container -->
+    <aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color: #001f3f">
+        <a href="#" class="brand-link">
+            <img src="/images/Logo FJKM_0.jpg" alt="FJKM Logo" class="brand-image img-responsive elevation-3" style="opacity: .9">
+            <span class="brand-text font-weight-light">Kolejy Teolojika Ivato</span>
+        </a>
+        <!-- Brand Logo -->
+        <!-- Sidebar -->
+        <script>
+            function chercher(){
+                var idcont=$('#search').val();
+                $.ajax({
+                    url: "{{ path('cherchePer') }}",
+                    type: "GET",
+                    dataType: "JSON",
+                    data: {
+                        search:idcont
+
+                    },
+                    success: function (liv) {
+                        var id='#listChercher';
+                        var souscats=$(id);
+                        souscats.html('');
+                        var i=0;
+                        for (i;i<liv.length;i++)
+                        {souscats.append('<div class="col-lg-3 col-6"><!-- small box --> <div class="small-box" style=""> <div class="inner" style="color: grey;display: flex" > <img src="/uploads/couvPer/'+liv[i].cheminCouv+'" alt="" style="width: 50%;"> <div style="padding:10px;background-color: whitesmoke" id="post-share"> <div style="margin-left: 10px;"> <p>'+liv[i].titreLiv+'</p> <p>'+liv[i].auteurLiv+'</p> </div> </div> </div> <a href="/Per?file='+liv[i].cheminLiv+'" class="small-box-footer">lire<i class="fas fa-arrow-circle-right"></i></a> </div> </div>')}}
+                });}
+            var j=0
+
+            function show(theme) {
+                $.ajax({
+                    url: "{{ path('listVol') }}",
+                    type: "GET",
+                    dataType: "JSON",
+                    data: {
+                        idTheme:theme
+
+                    },
+                    success: function (vols) {
+                        console.log(vols);
+                        var id='#option'+theme
+                        var sousclas=$(id);
+                        sousclas.html('');
+                        var i=0;
+                        for (i;i<vols.length;i++)
+                        {sousclas.append('<li class="nav-item has-treeview"><a href="#" class="nav-link" onclick="show2(\''+vols[i].idVol+'\');"><i class="far fa-folder-o nav-icon"></i><p id="option"> Volume/Tome '+ vols[i].vol+'</p><i class="right fas fa-angle-left"></i>\n' +
+                            '                                </a>\n' +
+                            '                                <ul class="nav nav-treeview" id="per'+vols[i].idVol+'">\n' +
+                            '                                </ul>\n' +
+                            '                            </li>\n')
+console.log(vols[i].idVol);
+
+                        }
+
+
+                    }
+
+                });}
+            function show2(sousClas) {
+                console.log(sousClas);
+                $.ajax({
+                    url: "{{ path('listPer') }}",
+                    type: "GET",
+                    dataType: "JSON",
+                    data: {
+                        idVol:sousClas
+                    },
+                    success: function (pers) {
+                        console.log(pers);
+                        var idPer='#per'+sousClas
+                        var champlivres=$(idPer);
+                        champlivres.html('');
+                        var i=0;
+                        for (i;i<pers.length;i++)
+                        {
+                            champlivres.append('<li class="nav-item"><a href="/Per?file='+pers[i].cheminPer+'&amp;propos=1&amp;date='+Date.now()+'" class="nav-link"><i class="far fa-file nav-icon"></i><p style="font-size: small">'+ pers[i].titrePer +'</p></a></li>')
+                        }
+
+                        for (i=0;i<champlivres.length;i++)
+                        {
+                            console.log(champlivres[i])
+
+                        }
+                    }
+
+                });
+                console.log(j)
+
+
+            }
+
+        </script>
+        <div class="sidebar">
+            <!-- Sidebar user panel (optional) -->
+
+            <!-- Sidebar Menu -->
+            <nav class="mt-2">
+                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                    <!-- Add icons to the links using the .nav-icon class
+                         with font-awesome or any other icon font library -->
+                    {% for classification in classifications %}
+                        <li class="nav-item has-treeview">
+
+
+                            <a href="#" class="nav-link" onclick="show('{{classification.id}}');">
+                                <i class="nav-icon fas fa-folder-open"></i>
+                                <p>
+                                    {{classification.theme}}
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+
+                            </a>
+                            <ul class="nav nav-treeview" id="option{{ classification.id }}">
+                            </ul>
+
+
+                        </li>
+                    {% endfor %}
+
+                </ul>
+            </nav>
+            <!-- /.sidebar-menu -->
+        </div>
+        <!-- /.sidebar -->
+    </aside>
+    <div id="showcase" style="height: content-box">
+
+    </div>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <div style="background: #3395ff; background-size: cover;">
+            <div style="position: center; color: whitesmoke;text-align: center;padding-top: 10px">
+                <p style="font-style: italic">"Fa mitomboa amin'ny fahasoavana sy ny fahalalana an'i Jesoa Kristy, Tompontsika sy Mpamonjy."   2Petera 3.18a</p>
+            </div>
+            <div style="text-align: center;margin-top: -20px">
+                <img src="/images/underline-white.png" alt="">
+            </div>
+        </div>
+
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+
+            <div class="container-fluid">
+
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0" style="color:grey"></h1></div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
+
+        <!-- Main content -->
+
+        <section class="content">
+            <div class="container-fluid">
+            <div class="container">
+                <!-- Small boxes (Stat box) -->
+                <div class="row" id="listChercher">
+                    {%for periodique in periodiques%}
+                        <div class="col-lg-3 col-6">
+
+                            <!-- small box -->
+                            <div class="small-box" style="">
+                                <div class="inner" style="color: grey;display: flex;height: 150px" >
+                                    <img src="/uploads/couvPer/{{periodique.cheminCouvPer}}" alt="" style="width: 50%;">
+                                    <div style="padding:10px;background-color: whitesmoke" id="post-share">
+                                        <div style="margin-left: 10px;">
+                                            <p>{{periodique.TitrePer}}</p>
+                                            <p>{{periodique.AuteurPer}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="small-box-footer">
+                               <button class="btn-primary"><a href="/Per?file={{periodique.cheminPer}}" >lire<i class="fas fa-arrow-circle-right"></i></a></button> </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    <!-- ./col -->
+                </div>
+                </div>
+            </div><!-- /.container-fluid -->
+        </section>
+
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+    <footer class="main-footer">
+        <strong>Copyright &copy; 2020</strong>
+        <div class="float-right d-none d-sm-inline-block">
+            <b>KTI</b>
+        </div>
+    </footer>
+
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+<script src="{{ asset('bundles/easyadmin/app.js') }}"></script>
+
+<!-- jQuery -->
+<script src="{{ asset('bundles/plugins/jquery/jquery.min.js') }}"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="{{ asset('bundles/plugins/jquery-ui/jquery-ui.min.js') }}"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+    $.widget.bridge('uibutton', $.ui.button)
+</script>
+<!-- Bootstrap 4 -->
+<script src="{{ asset('bundles/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<!-- ChartJS -->
+<script src="{{ asset('bundles/plugins/chart.js/Chart.min.js') }}"></script>
+<!-- Sparkline -->
+<script src="{{ asset('bundles/plugins/sparklines/sparkline.js') }}"></script>
+<!-- JQVMap -->
+<script src="{{ asset('bundles/plugins/jqvmap/jquery.vmap.min.js') }}"></script>
+<script src="{{ asset('bundles/plugins/jqvmap/maps/jquery.vmap.usa.js') }}"></script>
+<!-- jQuery Knob Chart -->
+<script src="{{ asset('bundles/plugins/jquery-knob/jquery.knob.min.js') }}"></script>
+<!-- daterangepicker -->
+<script src="{{ asset('bundles/plugins/moment/moment.min.js') }}"></script>
+<script src="{{ asset('bundles/plugins/daterangepicker/daterangepicker.js') }}"></script>
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="{{ asset('bundles/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}"></script>
+<!-- Summernote -->
+<script src="{{ asset('bundles/plugins/summernote/summernote-bs4.min.js') }}"></script>
+<!-- overlayScrollbars -->
+<script src="{{ asset('bundles/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
+<!-- AdminLTE App -->
+<script src="{{ asset('bundles/dist/js/adminlte.js') }}"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script src="{{ asset('bundles/dist/js/pages/dashboard.js') }}"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="{{ asset('bundles/dist/js/demo.js') }}"></script>
+
+</body>
+</html>
