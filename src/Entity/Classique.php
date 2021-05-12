@@ -24,10 +24,7 @@ class Classique
      * @ORM\Column(type="integer")
      */
     private $numIvent;
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $numCot;
+
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -40,26 +37,16 @@ class Classique
     private $idCat;
 
     /**
-     *
      *@ORM\Column(type="integer")
      */
     private $idSousCat;
-
-
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $nbPage;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
     private $auteurLiv;
 
-    /**
-     * @ORM\Column(type="date")
-     */
-    private $dateEntreLiv;
+
     /**
      * @ORM\Column(type="string", length=255)
      */
@@ -75,25 +62,7 @@ class Classique
      */
     private $isbnLiv;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $coutLiv;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $largLiv;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $longLiv;
-
-    /**
-     * @ORM\Column(type="text")
-     */
-    private $remLiv;
     /**
      * @ORM\Column(type="string",length=255)
      */
@@ -181,16 +150,6 @@ class Classique
         $this->numIvent = $numIvent;
         return $this;
     }
-    public function getNumCot(): ?int
-    {
-        return $this->numCot;
-    }
-
-    public function setNumCot(int $numCot): self
-    {
-        $this->numCot = $numCot;
-        return $this;
-    }
 
     public function getTitreLiv(): ?string
     {
@@ -227,19 +186,6 @@ class Classique
 
         return $this;
     }
-
-    public function getNbPage(): ?int
-    {
-        return $this->nbPage;
-    }
-
-    public function setNbPage(int $nbPage): self
-    {
-        $this->nbPage = $nbPage;
-
-        return $this;
-    }
-
     public function getAuteurLiv(): ?string
     {
         return $this->auteurLiv;
@@ -252,17 +198,6 @@ class Classique
         return $this;
     }
 
-    public function getDateEntreLiv(): ?\DateTimeInterface
-    {
-        return $this->dateEntreLiv;
-    }
-
-    public function setDateEntreLiv(\DateTimeInterface $dateEntreLiv): self
-    {
-        $this->dateEntreLiv = $dateEntreLiv;
-
-        return $this;
-    }
 
     public function getLieuEditLiv(): ?string
     {
@@ -300,53 +235,6 @@ class Classique
         return $this;
     }
 
-    public function getCoutLiv(): ?int
-    {
-        return $this->coutLiv;
-    }
-
-    public function setCoutLiv(int $coutLiv): self
-    {
-        $this->coutLiv = $coutLiv;
-
-        return $this;
-    }
-
-    public function getLargLiv(): ?int
-    {
-        return $this->largLiv;
-    }
-
-    public function setLargLiv(int $largLiv): self
-    {
-        $this->largLiv = $largLiv;
-
-        return $this;
-    }
-
-    public function getLongLiv(): ?int
-    {
-        return $this->longLiv;
-    }
-
-    public function setLongLiv(int $longLiv): self
-    {
-        $this->longLiv = $longLiv;
-
-        return $this;
-    }
-
-    public function getRemLiv(): ?string
-    {
-        return $this->remLiv;
-    }
-
-    public function setRemLiv(string $remLiv): self
-    {
-        $this->remLiv = $remLiv;
-
-        return $this;
-    }
 
     public function getCheminLiv(): ?string
     {

@@ -47,26 +47,18 @@ easy_admin:
         label: "Classique"
         form:
           fields:
-              - {type: 'group', icon: 'th-list',label: 'ddd', css_class: 'col-lg-7'}
+              - {type: 'group', icon: 'th-list',label: 'Proprietés', css_class: 'col-lg-7'}
               - {property: 'numIvent' , label: 'numero Inventaire',css_class: 'bbb'}
-              - {property: 'numCot' , label: 'numero Cottage'}
               - { property: 'titreLiv',label: 'Titre'}
               - { property: 'idCat', css_class: 'eee' }
               - { property: 'idSousCat', css_class: 'aaa' }
-              - nbPage
               - { property: 'auteurLiv',label: 'Auteur'}
-              - dateEntreLiv
               - { property: 'lieuEditLiv',label: 'Lieu D edition'}
               - dateEditLiv
-              - {type: 'group', icon: 'th-list',label: 'jjj', css_class: 'col-lg-5'}
               - { property: 'isbnLiv',label: 'ISBN'}
-              - { property: 'coutLiv',label: 'Cout'}
-              - { property: 'largLiv',label: 'Largeur'}
-              - { property: 'longLiv',label: 'Longueur'}
-              - { property: 'remLiv',label: 'Remarque'}
-              - {type: 'group', icon: 'clip',label: 'Attachments', css_class: 'col-lg-5'}
-              - { property: 'livFile', type: 'vich_file' }
-              - { property: 'couvFile', type: 'vich_image' }
+              - {type: 'group', icon: 'clip',label: 'Fichier', css_class: 'col-lg-5'}
+              - { property: 'livFile',label: 'Pdf', type: 'vich_file' }
+              - { property: 'couvFile',label: 'couverture(image)', type: 'vich_image' }
 
         list:
           collapse_actions: true
